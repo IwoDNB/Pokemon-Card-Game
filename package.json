@@ -1,0 +1,19 @@
+{
+  "name": "pokemon-lite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "run-p watch:ts watch:html",
+    "watch:ts": "tsc -w",
+    "watch:html": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.7.4"
+  }
+}
