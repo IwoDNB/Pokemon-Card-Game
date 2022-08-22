@@ -6,86 +6,107 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/script/script.js">
+  
   <link rel="shortcut icon" href="/img/pokeball.png" type="image/x-icon">
+  <script defer type="module" src="./dist/pokemons.js"></script>
+  <script defer type="module" src="./dist/pokemonClass.js"></script>
+  <script defer type="module" src="./dist/main.js"></script>
   <title>Pokemon Lite</title>
 </head>
 
 <body>
   <section class="main">
-    <!-- <div class="alert_window">
-      <p>// pikachu launched skill 'lightning' successfully!</p>
-       
-        
-        
-    </div> -->
     <div class="card_container">
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front-one">
-          </div>
-          <div class="flip-card-back">
             <img src="/img/pikachu-wins.png" alt="" style="">
+
             <h1>Pikachu</h1>
+
             <div class="scroll_card">
+
               <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <p>Health</p> <span type="text" id="player_one_health">
               </div>
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
+
+              <div class="magic_input_box" >
+                <p>Energy</p>
+                <span type="text" id="player_one_energy">
               </div>
-              <div class="attack_input_box">
+
+              <div class="attack_input_box" >
                 <p>AttackSkill</p>
-                <input type="text">
+                <span type="text" id="player_one_attack">
               </div>
             </div>
           </div>
+      
         </div>
       </div>
+
+
       <div class="logo">
+
         <img src="/img/pokemon-logo-png-0.png" alt="">
-        <!-- <img src  ="/img/pokeball_alert.png" class="alert_window" alt=""> -->
+
         <div class="alert_window">
-          <p>// pikachu launched skill 'lightning' successfully!</p>
-          <p>// bulbasaur got 40 damage!!</p>
-          <p>// pikachu launched skill 'lightning' successfully!</p>
+         <div id="text_display"></div>
+
         </div>
+
       </div>
+
+
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front-one">
-          </div>
-          <div class="flip-card-back">
             <img src="/img/Bulbasaur.webp" alt="" style="">
             <h1>Bulbasaur</h1>
             <div class="scroll_card">
               <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <p>Health</p> <span type="text" id="player_two_health">
               </div>
-             <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
+              <div class="magic_input_box" >
+                <p>Energy</p>
+                <span type="text" id="player_two_energy">
               </div>
-              <div class="attack_input_box">
+              <div class="attack_input_box" >
                 <p>AttackSkill</p>
-                <input type="text">
+                <span type="text" id="player_two_attack">
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
+
     </div>
     <div class="btn_container_three">
-      <button>ATTACK</button>
-      <button>GAIN SKILLS</button>
-      <button>GAIN MAGIC</button>
+      <button id="attack-btn">ATTACK</button>
+      
+      <ul class="btn_drop">
+        <li><button  aria-haspopup="true" id="gain_skill_btn">GAIN SKILL</button>
+          <ul class="dropdown"  aria-label="submenu">
+            <li class="dropdown_li"><button id="attack_first_btn">Attack One</button></li>
+            <li class="dropdown_li"><button id="attack_second_btn">Attack Two</button></li>
+            <li class="dropdown_li"><button id="attack_third_btn">Attack three</button></li>
+          </ul>
+        </li>
+      </ul>
+
+      <button id="gain_energy_btn">GAIN ENERGY</button>
     </div>
+
+
+
     <footer>
       <p>
         DCI JAVASCRIPT PROJECT BY IWO, LEE & DENIS
       <p>
       <footer>
   </section>
+
+
 </body>
+
 </html>
