@@ -1,287 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/script/script.js">
-    <link rel="shortcut icon" href="/img/pokeball.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script defer type="module" src="./dist/pokemons.js"></script>
+    <script defer type="module" src="./dist/pickCard.js"></script>
+    <link rel="shortcut icon" href="/img/pokeball.png" type="image/x-icon" />
     <title>Pokemon Lite</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="box">
+      <section class="card_box_big">
+        <!-- BULBASAUR CARD -->
+        <div class="flip-card" id="choose_card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/Bulbasaur.webp" />
 
-  <div class="box">
+              <h1>Bulbasaur</h1>
 
-    <section class="card_box_big">
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-<!-- BULBASAUR CARD -->
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-      <div class="flip-card" id="choose_card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/Bulbasaur.webp" alt="" style="">
-
-            <h1>Bulbasaur</h1>
-
-            <div class="scroll_card">
-
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
-              </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
-          </div>
-        </div>
-      </div>
-
-
- <!-- PIKACHU CARD -->
-
- <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/pikachu-wins.png" alt="" style="">
-
-            <h1>Pikachu</h1>
-
-            <div class="scroll_card">
-
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
-              </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
             </div>
           </div>
-      
         </div>
-      </div>
 
-<!-- CHARIZARD CARD -->
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/charizzard.jpg" alt="" style="">
+        <!-- PIKACHU CARD -->
 
-            <h1>Charizard</h1>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/pikachu-wins.png" />
 
-            <div class="scroll_card">
+              <h1>Pikachu</h1>
 
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
-<!-- SQUIRTLE CARD -->
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/squirtle.jpg" alt="" style="">
 
-            <h1>Squirtle</h1>
+        <!-- CHARIZARD CARD -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/charizzard.jpg" />
 
-            <div class="scroll_card">
+              <h1>Charizard</h1>
 
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
+        <!-- SQUIRTLE CARD -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/squirtle.jpg" />
 
-<!-- PSYDUCK CARD -->
+              <h1>Squirtle</h1>
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/psyduck.jpeg" alt="" style="">
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-            <h1>Psyduck</h1>
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-            <div class="scroll_card">
-
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
 
-<!-- MEOW CARD -->
+        <!-- PSYDUCK CARD -->
 
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/psyduck.jpeg" />
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/meow.jpg" alt="" style="">
+              <h1>Psyduck</h1>
 
-            <h1>Meow</h1>
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-            <div class="scroll_card">
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
 
+        <!-- MEOW CARD -->
 
-<!-- ONYX CARD -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/meow.jpg" />
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/onyx.webp" alt="" style="">
+              <h1>Meow</h1>
 
-            <h1>Onyx</h1>
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-            <div class="scroll_card">
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
 
+        <!-- ONYX CARD -->
 
-<!-- ALAKAZAM CARD -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/onyx.webp" />
 
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front-one">
-            <img src="/img/alakazam.webp" alt="" style="">
+              <h1>Onyx</h1>
 
-            <h1>Alakazam</h1>
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-            <div class="scroll_card">
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
 
-              <div class="Health_input_box">
-                <p>Health</p> <input type="text">
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
               </div>
-
-              <div class="magic_input_box">
-                <p>Magic</p>
-                <input type="text">
-              </div>
-              
-              <div class="attack_input_box">
-                <p>AttackSkill</p>
-                <input type="text">
-              </div>
-
-          </div>
-        
-
+            </div>
           </div>
         </div>
-      </div>
 
-   
-      
+        <!-- ALAKAZAM CARD -->
 
-    
- 
-</section>
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front-one">
+              <img src="/img/alakazam.webp" />
 
-</div>
-<div class="btn_container_two">
-  <a href="play_game.html"><p>PICK CARDS</p></a> 
-  
-</div>
+              <h1>Alakazam</h1>
 
-</body>
+              <div class="scroll_card">
+                <div class="Health_input_box">
+                  <p>Health</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="magic_input_box">
+                  <p>Magic</p>
+                  <p id="attribute_fields"></p>
+                </div>
+
+                <div class="attack_input_box">
+                  <p>AttackSkill</p>
+                  <p id="attribute_fields"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="btn_container_two">
+      <a href="play_game.html"><p>PICK CARDS</p></a>
+    </div>
+  </body>
 </html>

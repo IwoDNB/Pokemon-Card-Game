@@ -1,13 +1,9 @@
 import Pokemon, { AttackSkill } from './pokemonClass.js';
+import { type AttackSkillType } from './pokemonClass';
 import pokemons from './pokemons.js';
 
-interface SkillType {
-  name: string;
-  damage: number;
-  energy: number;
-}
-
 let playerTurn: 1 | 2 = 1;
+let actionsLeft: 0 | 1 | 2 = 2;
 
 const playerOneHealth = document.getElementById(
   'player_one_health'
@@ -46,9 +42,30 @@ const textDisplay = document.getElementById(
 const gainEnergyButton = document.getElementById(
   'gain_energy_btn'
 ) as HTMLButtonElement;
+const endTurnButton = document.querySelector<HTMLButtonElement>(
+  '#end_turn_btn'
+) as HTMLButtonElement;
+const playerOneName = document.getElementById(
+  'player_one_name'
+) as HTMLButtonElement;
+const playerTwoName = document.getElementById(
+  'player_two_name'
+) as HTMLButtonElement;
+const playerOneImage = document.getElementById(
+  'player-one-image'
+) as HTMLImageElement;
+const playerTwoImage = document.getElementById(
+  'player-two-image'
+) as HTMLImageElement;
 
-const playerOneData = pokemons.pokemons[0];
-const playerTwoData = pokemons.pokemons[1];
+const playerOneData = JSON.parse(localStorage.getItem('playerOne') as string);
+const playerTwoData = JSON.parse(localStorage.getItem('playerTwo') as string);
+playerOneName.textContent = playerOneData.name;
+playerTwoName.textContent = playerTwoData.name;
+
+playerOneImage.src = `./img/newImages/${playerOneData.name}.jpg`;
+playerTwoImage.src = `./img/newImages/${playerTwoData.name}.jpg`;
+
 const playerOne = new Pokemon(
   playerOneData.name,
   playerOneData.health,
@@ -71,7 +88,7 @@ playerTwoHealth.textContent = String(playerTwo.health);
 playerTwoEnergy.textContent = String(playerTwo.energy);
 playerTwoAttack.textContent = 'Not yet learned';
 
-const getSkill = (current: SkillType[], added: SkillType[]) => {
+const getSkill = (current: AttackSkillType[], added: AttackSkillType[]) => {
   const remaining = added.filter(e => !current.some(k => k.name === e.name));
   return remaining.length > 1
     ? remaining[Math.floor(Math.random() * remaining.length)]
@@ -79,9 +96,11 @@ const getSkill = (current: SkillType[], added: SkillType[]) => {
 };
 
 const populateButtons = (player: any) => {
-  if (player.skills[0]) attackOneButton.textContent = player.skills[0].name;
-  if (player.skills[1]) attackTwoButton.textContent = player.skills[1].name;
-  if (player.skills[2]) attackThreeButton.textContent = player.skills[2].name;
+  [attackOneButton, attackTwoButton, attackThreeButton].forEach((button, i) => {
+    button.textContent = player.skills[i]
+      ? player.skills[i].name
+      : 'Not learned';
+  });
 };
 
 [attackOneButton, attackTwoButton, attackThreeButton].forEach(button => {
@@ -94,46 +113,112 @@ const populateButtons = (player: any) => {
 
 gainSkillButton.addEventListener('click', (evt: MouseEvent) => {
   if (playerTurn === 1) {
-    const newSkill = getSkill(playerOne.skills, playerOneData.skills);
-    if (newSkill) playerOne.skills.push(newSkill);
-    populateButtons(playerOne);
-    return;
+    if (actionsLeft > 0) {
+      if (playerOne.skills.length === 3) {
+        textDisplay.innerHTML = `<p> No more skills to gain </p>`;
+        return;
+      }
+      const newSkill = getSkill(playerOne.skills, playerOneData.skills);
+      if (newSkill) playerOne.skills.push(newSkill);
+      populateButtons(playerOne);
+      actionsLeft -= 1;
+      return;
+    } else {
+      textDisplay.innerHTML = `<p>Not actions left</p>`;
+    }
   }
   if (playerTurn === 2) {
-    const newSkill = getSkill(playerTwo.skills, playerTwoData.skills);
-    if (newSkill) playerTwo.skills.push(newSkill);
-    populateButtons(playerTwo);
-    return;
+    if (actionsLeft > 0) {
+      if (playerTwo.skills.length === 3) {
+        textDisplay.innerHTML = `<p> No more skills to gain </p>`;
+        return;
+      }
+      const newSkill = getSkill(playerTwo.skills, playerTwoData.skills);
+      if (newSkill) playerTwo.skills.push(newSkill);
+      populateButtons(playerTwo);
+      actionsLeft -= 1;
+      return;
+    } else {
+      textDisplay.innerHTML = `<p>Not actions left</p>`;
+    }
   }
 });
 
 attackButton.addEventListener('click', (evt: MouseEvent) => {
-  //TODO: IMPLEMENT THE LOGIC FOR PLAYER TWO AS WELL
-  //TODO: RESTRICT THE NUMBER OF GAINED SKILLS AND ATTACKS!
   if (playerTurn === 1) {
-    if (playerOne.skills.length === 0) console.log('no skills learned');
+    if (playerOne.skills.length === 0)
+      textDisplay.innerHTML = '<p> No skill gained <p>';
     else {
-      const foundSkill = playerOne.skills.filter(
-        skill => skill.name === playerOneAttack.textContent
-      )[0];
-      const resultOfAnAttack = playerOne.attack(foundSkill.name, playerTwo);
-      textDisplay.innerHTML = resultOfAnAttack;
-      playerTwoHealth.textContent =
-        playerTwo.health > 0 ? String(playerTwo.health) : 'DEAD';
-      if (playerOne.energy - foundSkill.energy < 0) {
-        return;
+      if (actionsLeft > 0) {
+        const foundSkill = playerOne.skills.filter(
+          skill => skill.name === playerOneAttack.textContent
+        )[0];
+        const resultOfAnAttack = playerOne.attack(foundSkill.name, playerTwo);
+        textDisplay.innerHTML = resultOfAnAttack;
+        playerTwoHealth.textContent =
+          playerTwo.health > 0 ? String(playerTwo.health) : 'DEAD';
+        if (playerOne.energy - foundSkill.energy < 0) {
+          return;
+        } else {
+          playerOne.energy -= foundSkill.energy;
+          playerOneEnergy.textContent = String(playerOne.energy);
+          actionsLeft -= 1;
+        }
       } else {
-        playerOne.energy -= foundSkill.energy;
-        playerOneEnergy.textContent = String(playerOne.energy);
+        textDisplay.innerHTML = `<p>Not actions left</p>`;
       }
     }
   }
-  //TODO: change turn
+  if (playerTurn === 2) {
+    if (playerTwo.skills.length === 0)
+      textDisplay.innerHTML = '<p> No skill gained <p>';
+    else {
+      if (actionsLeft > 0) {
+        const foundSkill = playerTwo.skills.filter(
+          skill => skill.name === playerTwoAttack.textContent
+        )[0];
+        const resultOfAnAttack = playerTwo.attack(foundSkill.name, playerTwo);
+        textDisplay.innerHTML = resultOfAnAttack;
+        playerOneHealth.textContent =
+          playerOne.health > 0 ? String(playerOne.health) : 'DEAD';
+        if (playerTwo.energy - foundSkill.energy < 0) {
+          return;
+        } else {
+          playerTwo.energy -= foundSkill.energy;
+          playerTwoEnergy.textContent = String(playerTwo.energy);
+          actionsLeft -= 1;
+        }
+      } else {
+        textDisplay.innerHTML = `<p>Not actions left</p>`;
+      }
+    }
+  }
 });
 
 gainEnergyButton.addEventListener('click', (evt: MouseEvent) => {
   if (playerTurn === 1) {
-    playerOne.getMagic();
-    playerOneEnergy.textContent = String(playerOne.energy);
+    if (actionsLeft > 0) {
+      playerOne.getMagic();
+      actionsLeft -= 1;
+      playerOneEnergy.textContent = String(playerOne.energy);
+    } else {
+      textDisplay.innerHTML = `<p>Not actions left</p>`;
+    }
   }
+  if (playerTurn === 2) {
+    if (actionsLeft > 0) {
+      playerTwo.getMagic();
+      actionsLeft -= 1;
+      playerTwoEnergy.textContent = String(playerTwo.energy);
+    } else {
+      textDisplay.innerHTML = `<p>Not actions left</p>`;
+    }
+  }
+});
+
+endTurnButton.addEventListener('click', (evt: MouseEvent) => {
+  actionsLeft = 2;
+  playerTurn = playerTurn === 1 ? 2 : 1;
+  const player = playerTurn === 1 ? playerOne : playerTwo;
+  populateButtons(player);
 });

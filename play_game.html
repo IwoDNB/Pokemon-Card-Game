@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  
+
   <link rel="shortcut icon" href="/img/pokeball.png" type="image/x-icon">
   <script defer type="module" src="./dist/pokemons.js"></script>
   <script defer type="module" src="./dist/pokemonClass.js"></script>
@@ -20,9 +20,9 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front-one">
-            <img src="/img/pikachu-wins.png" alt="" style="">
+            <img id="player-one-image">
 
-            <h1>Pikachu</h1>
+            <h1 id="player_one_name"></h1>
 
             <div class="scroll_card">
 
@@ -30,18 +30,18 @@
                 <p>Health</p> <span type="text" id="player_one_health">
               </div>
 
-              <div class="magic_input_box" >
+              <div class="magic_input_box">
                 <p>Energy</p>
                 <span type="text" id="player_one_energy">
               </div>
 
-              <div class="attack_input_box" >
+              <div class="attack_input_box">
                 <p>AttackSkill</p>
                 <span type="text" id="player_one_attack">
               </div>
             </div>
           </div>
-      
+
         </div>
       </div>
 
@@ -51,7 +51,7 @@
         <img src="/img/pokemon-logo-png-0.png" alt="">
 
         <div class="alert_window">
-         <div id="text_display"></div>
+          <div id="text_display"></div>
 
         </div>
 
@@ -61,40 +61,38 @@
       <div class="flip-card">
         <div class="flip-card-inner">
           <div class="flip-card-front-one">
-            <img src="/img/Bulbasaur.webp" alt="" style="">
-            <h1>Bulbasaur</h1>
+            <img id="player-two-image">
+            <h1 id="player_two_name"></h1>
             <div class="scroll_card">
               <div class="Health_input_box">
                 <p>Health</p> <span type="text" id="player_two_health">
               </div>
-              <div class="magic_input_box" >
+              <div class="magic_input_box">
                 <p>Energy</p>
                 <span type="text" id="player_two_energy">
               </div>
-              <div class="attack_input_box" >
+              <div class="attack_input_box">
                 <p>AttackSkill</p>
                 <span type="text" id="player_two_attack">
               </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
-
     </div>
     <div class="btn_container_three">
       <button id="attack-btn">ATTACK</button>
-      
       <ul class="btn_drop">
-        <li><button  aria-haspopup="true" id="gain_skill_btn">GAIN SKILL</button>
-          <ul class="dropdown"  aria-label="submenu">
-            <li class="dropdown_li"><button id="attack_first_btn">Attack One</button></li>
-            <li class="dropdown_li"><button id="attack_second_btn">Attack Two</button></li>
-            <li class="dropdown_li"><button id="attack_third_btn">Attack three</button></li>
+        <li><button aria-haspopup="true" id="gain_skill_btn">GAIN SKILL</button>
+          <ul class="dropdown" aria-label="submenu">
+            <li class="dropdown_li"><button id="attack_first_btn">Not learned</button></li>
+            <li class="dropdown_li"><button id="attack_second_btn">Not learned</button></li>
+            <li class="dropdown_li"><button id="attack_third_btn">Not learned</button></li>
           </ul>
         </li>
       </ul>
-
       <button id="gain_energy_btn">GAIN ENERGY</button>
+      <button id="end_turn_btn">END TURN</button>
     </div>
 
 

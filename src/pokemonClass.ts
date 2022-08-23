@@ -1,9 +1,9 @@
-interface AttackSkillType {
+export interface AttackSkillType {
   name: string;
   damage: number;
   energy: number;
 }
-interface PokemonType {
+export interface PokemonType {
   name: string;
   health: number;
   energy: number;
