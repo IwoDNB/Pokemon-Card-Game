@@ -58,6 +58,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+
+
 .card_box_big :focus {
   box-shadow: 3px 3px 2px 20px #fefefe;
 }
@@ -88,8 +90,8 @@ body {
 
 .btn_container .gif {
   position: relative;
-  width: 18rem;
-  height: 14rem;
+  width: 22rem;
+  height: 19rem;
   animation-name: slide-in-bck-center;
   animation-duration: 1s;
   bottom: 10rem;
@@ -508,7 +510,7 @@ button:hover {
 
 .btn_container_three {
   margin-top: 3rem;
-  width: 50%;
+  width: 70%;
   height: 10%;
   display: flex;
   justify-content: center;
@@ -706,6 +708,10 @@ ul li ul li {
   top: 2rem;
 }
 
+.card_p {
+  color: black;
+}
+
 .scroll_card .Health_input_box {
   display: flex;
   align-items: center;
@@ -724,8 +730,14 @@ ul li ul li {
 .scroll_card p {
   margin-right: 1rem;
   font-weight: 500;
+ 
+  
 }
+.scroll_card .Health_input_box{
+  color: black;
+  font-weight: bold;
 
+}
 .scroll_card .Health_input_box input {
   height: 1.2rem;
   width: 2rem;
@@ -736,6 +748,9 @@ ul li ul li {
   align-items: center;
   justify-content: space-between;
   height: 2.2rem;
+  color: black;
+  font-weight: bold;
+  
 }
 
 .scroll_card .magic_input_box input {
@@ -744,16 +759,28 @@ ul li ul li {
 }
 
 .scroll_card .attack_input_box {
+  
   display: flex;
   align-items: center;
   height: 2.2rem;
   justify-content: space-between;
+  position: relative;
+  left: -2rem;
+  font-weight: bold;
+  width: 5rem;
 }
 
-.scroll_card .attack_input_box input {
+.scroll_card .attack_input_box span{
+
+  margin-top: 1.2rem;
+  font-size: 1.1rem;
+
+}
+
+/* .scroll_card .attack_input_box input {
   height: 1.2rem;
   width: 2rem;
-}
+} */
 
 footer {
   margin-top: 3rem;
